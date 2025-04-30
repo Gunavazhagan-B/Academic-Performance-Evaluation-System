@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Performance Evaluation System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Academic Performance Evaluation</h1>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <span id="theme-label">Light Mode</span>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li class="active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                <li data-tab="evaluation"><i class="fas fa-graduation-cap"></i> Performance Evaluation</li>
+                <li data-tab="reports"><i class="fas fa-file-alt"></i> Reports</li>
+                <li data-tab="settings"><i class="fas fa-cog"></i> Settings</li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard">
+                <div class="welcome-banner">
+                    <h2>Welcome to Academic Performance Evaluation System</h2>
+                    <p>Monitor and evaluate student academic performance based on CGPA requirements and program standards.</p>
+                </div>
+
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-info">
+                            <h3>Total Students</h3>
+                            <p class="stat-value">1,248</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>Good Standing</h3>
+                            <p class="stat-value">1,012</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <h3>Academic Warning</h3>
+                            <p class="stat-value">156</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>Alternate Program</h3>
+                            <p class="stat-value">64</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>Dismissed</h3>
+                            <p class="stat-value">16</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Recent Evaluations</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Program</th>
+                                <th>Overall CGPA</th>
+                                <th>Major CGPA</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S1001</td>
+                                <td>John Smith</td>
+                                <td>Computer Science</td>
+                                <td>3.45</td>
+                                <td>3.60</td>
+                                <td><span class="status good">Good Standing</span></td>
+                                <td>2023-05-15</td>
+                            </tr>
+                            <tr>
+                                <td>S1002</td>
+                                <td>Emily Johnson</td>
+                                <td>Electrical Engineering</td>
+                                <td>2.85</td>
+                                <td>2.70</td>
+                                <td><span class="status warning">Academic Warning</span></td>
+                                <td>2023-05-15</td>
+                            </tr>
+                            <tr>
+                                <td>S1003</td>
+                                <td>Michael Brown</td>
+                                <td>Mechanical Engineering</td>
+                                <td>1.95</td>
+                                <td>1.80</td>
+                                <td><span class="status alternate">Continue in Alternate</span></td>
+                                <td>2023-05-14</td>
+                            </tr>
+                            <tr>
+                                <td>S1004</td>
+                                <td>Sarah Davis</td>
+                                <td>Business Administration</td>
+                                <td>1.65</td>
+                                <td>1.50</td>
+                                <td><span class="status dismissed">Dismissed</span></td>
+                                <td>2023-05-14</td>
+                            </tr>
+                            <tr>
+                                <td>S1005</td>
+                                <td>David Wilson</td>
+                                <td>Computer Science</td>
+                                <td>3.20</td>
+                                <td>3.35</td>
+                                <td><span class="status good">Good Standing</span></td>
+                                <td>2023-05-13</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Evaluation Tab -->
+            <div class="tab-content" id="evaluation">
+                <h2>Performance Evaluation</h2>
+                
+                <div class="evaluation-form">
+                    <div class="form-group">
+                        <label for="student-id">Student ID</label>
+                        <input type="text" id="student-id" placeholder="Enter student ID">
+                        <button class="search-btn" id="search-student"><i class="fas fa-search"></i> Search</button>
+                    </div>
+
+                    <div class="student-info" id="student-info">
+                        <div class="info-display">
+                            <div class="info-item">
+                                <span class="info-label">Name:</span>
+                                <span class="info-value" id="student-name">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Program:</span>
+                                <span class="info-value" id="student-program">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Current Status:</span>
+                                <span class="info-value" id="student-status">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="overall-cgpa">Overall CGPA</label>
+                        <input type="number" id="overall-cgpa" min="0" max="4" step="0.01" placeholder="Enter overall CGPA">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="major-cgpa">Major CGPA</label>
+                        <input type="number" id="major-cgpa" min="0" max="4" step="0.01" placeholder="Enter major CGPA">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="failed-courses">Number of Failed Courses</label>
+                        <input type="number" id="failed-courses" min="0" placeholder="Enter number of failed courses">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="evaluation-date">Evaluation Date</label>
+                        <input type="date" id="evaluation-date">
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn primary" id="evaluate-btn">Evaluate Performance</button>
+                        <button class="btn secondary">Clear Form</button>
+                    </div>
+                </div>
+
+                <div class="evaluation-result" id="evaluation-result">
+                    <h3>Evaluation Result</h3>
+                    <div class="result-details">
+                        <div class="result-item">
+                            <span class="result-label">Overall CGPA:</span>
+                            <span class="result-value" id="result-overall">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Major CGPA:</span>
+                            <span class="result-value" id="result-major">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Failed Courses:</span>
+                            <span class="result-value" id="result-failed">-</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Program Requirements:</span>
+                            <span class="result-value" id="result-requirements">-</span>
+                        </div>
+                        <div class="result-item major">
+                            <span class="result-label">Academic Status:</span>
+                            <span class="result-value" id="result-status">-</span>
+                        </div>
+                        <div class="result-item major">
+                            <span class="result-label">Recommendation:</span>
+                            <span class="result-value" id="result-recommendation">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div class="tab-content" id="reports">
+                <h2>Academic Reports</h2>
+                
+                <div class="report-filters">
+                    <div class="filter-group">
+                        <label for="report-type">Report Type</label>
+                        <select id="report-type">
+                            <option value="status-summary">Status Summary</option>
+                            <option value="warning-list">Academic Warning List</option>
+                            <option value="dismissal-list">Dismissal List</option>
+                            <option value="alternate-list">Alternate Program List</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="program-filter">Program</label>
+                        <select id="program-filter">
+                            <option value="all">All Programs</option>
+                            <option value="cs">Computer Science</option>
+                            <option value="ee">Electrical Engineering</option>
+                            <option value="me">Mechanical Engineering</option>
+                            <option value="ba">Business Administration</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="year-filter">Academic Year</label>
+                        <select id="year-filter">
+                            <option value="2023">2022-2023</option>
+                            <option value="2022">2021-2022</option>
+                            <option value="2021">2020-2021</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn primary" id="generate-report">Generate Report</button>
+                </div>
+                
+                <div class="report-preview">
+                    <div class="report-header">
+                        <h3 id="report-title">Status Summary Report</h3>
+                        <div class="report-meta">
+                            <span id="report-program">All Programs</span> | 
+                            <span id="report-year">2022-2023 Academic Year</span>
+                        </div>
+                    </div>
+                    
+                    <div class="report-content" id="report-content">
+                        <div class="report-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">Total Students:</span>
+                                <span class="summary-value">1,248</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Good Standing:</span>
+                                <span class="summary-value">1,012 (81.1%)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Academic Warning:</span>
+                                <span class="summary-value">156 (12.5%)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Alternate Program:</span>
+                                <span class="summary-value">64 (5.1%)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Dismissed:</span>
+                                <span class="summary-value">16 (1.3%)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="report-chart">
+                            <div class="chart-bar" style="--value:81.1%; --color:var(--success-color);">
+                                <span>Good Standing</span>
+                                <div class="bar"></div>
+                                <span>81.1%</span>
+                            </div>
+                            <div class="chart-bar" style="--value:12.5%; --color:var(--warning-color);">
+                                <span>Academic Warning</span>
+                                <div class="bar"></div>
+                                <span>12.5%</span>
+                            </div>
+                            <div class="chart-bar" style="--value:5.1%; --color:var(--alternate-color);">
+                                <span>Alternate Program</span>
+                                <div class="bar"></div>
+                                <span>5.1%</span>
+                            </div>
+                            <div class="chart-bar" style="--value:1.3%; --color:var(--danger-color);">
+                                <span>Dismissed</span>
+                                <div class="bar"></div>
+                                <span>1.3%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="report-actions">
+                        <button class="btn primary"><i class="fas fa-download"></i> Download PDF</button>
+                        <button class="btn secondary"><i class="fas fa-print"></i> Print Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settings">
+                <h2>System Settings</h2>
+                
+                <div class="settings-tabs">
+                    <div class="settings-nav">
+                        <div class="settings-nav-item active" data-settings-tab="evaluation-criteria">Evaluation Criteria</div>
+                        <div class="settings-nav-item" data-settings-tab="program-settings">Program Settings</div>
+                        <div class="settings-nav-item" data-settings-tab="user-management">User Management</div>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <div class="settings-pane active" id="evaluation-criteria">
+                            <h3>Evaluation Criteria Configuration</h3>
+                            
+                            <div class="criteria-form">
+                                <div class="form-group">
+                                    <label for="good-standing-cgpa">Good Standing (Minimum CGPA)</label>
+                                    <input type="number" id="good-standing-cgpa" min="0" max="4" step="0.1" value="2.0">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="warning-cgpa">Academic Warning (Minimum CGPA)</label>
+                                    <input type="number" id="warning-cgpa" min="0" max="4" step="0.1" value="1.7">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="alternate-cgpa">Alternate Program (Minimum CGPA)</label>
+                                    <input type="number" id="alternate-cgpa" min="0" max="4" step="0.1" value="1.5">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="dismissal-cgpa">Dismissal (Below CGPA)</label>
+                                    <input type="number" id="dismissal-cgpa" min="0" max="4" step="0.1" value="1.5">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="max-failed-courses">Maximum Failed Courses (Good Standing)</label>
+                                    <input type="number" id="max-failed-courses" min="0" value="2">
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button class="btn primary">Save Changes</button>
+                                    <button class="btn secondary">Reset to Defaults</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-pane" id="program-settings">
+                            <h3>Program Management</h3>
+                            
+                            <div class="program-list">
+                                <div class="program-item">
+                                    <h4>Computer Science</h4>
+                                    <div class="program-details">
+                                        <div class="detail-item">
+                                            <span>Minimum Overall CGPA:</span>
+                                            <span>2.0</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Minimum Major CGPA:</span>
+                                            <span>2.3</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Core Courses:</span>
+                                            <span>12</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn small">Edit</button>
+                                </div>
+                                
+                                <div class="program-item">
+                                    <h4>Electrical Engineering</h4>
+                                    <div class="program-details">
+                                        <div class="detail-item">
+                                            <span>Minimum Overall CGPA:</span>
+                                            <span>2.0</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Minimum Major CGPA:</span>
+                                            <span>2.2</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Core Courses:</span>
+                                            <span>14</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn small">Edit</button>
+                                </div>
+                                
+                                <div class="program-item">
+                                    <h4>Mechanical Engineering</h4>
+                                    <div class="program-details">
+                                        <div class="detail-item">
+                                            <span>Minimum Overall CGPA:</span>
+                                            <span>2.0</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Minimum Major CGPA:</span>
+                                            <span>2.1</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Core Courses:</span>
+                                            <span>13</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn small">Edit</button>
+                                </div>
+                                
+                                <div class="program-item">
+                                    <h4>Business Administration</h4>
+                                    <div class="program-details">
+                                        <div class="detail-item">
+                                            <span>Minimum Overall CGPA:</span>
+                                            <span>2.0</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Minimum Major CGPA:</span>
+                                            <span>2.0</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span>Core Courses:</span>
+                                            <span>10</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn small">Edit</button>
+                                </div>
+                            </div>
+                            
+                            <button class="btn primary"><i class="fas fa-plus"></i> Add New Program</button>
+                        </div>
+                        
+                        <div class="settings-pane" id="user-management">
+                            <h3>User Accounts</h3>
+                            
+                            <div class="user-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Name</th>
+                                            <th>Role</th>
+                                            <th>Last Login</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>admin</td>
+                                            <td>System Administrator</td>
+                                            <td>Admin</td>
+                                            <td>2023-05-15 14:30</td>
+                                            <td>
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-key"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>advisor1</td>
+                                            <td>Dr. Sarah Johnson</td>
+                                            <td>Academic Advisor</td>
+                                            <td>2023-05-15 10:15</td>
+                                            <td>
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-key"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>advisor2</td>
+                                            <td>Prof. Michael Brown</td>
+                                            <td>Academic Advisor</td>
+                                            <td>2023-05-14 16:45</td>
+                                            <td>
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-key"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>registrar1</td>
+                                            <td>Emily Davis</td>
+                                            <td>Registrar</td>
+                                            <td>2023-05-15 09:00</td>
+                                            <td>
+                                                <button class="btn-icon"><i class="fas fa-edit"></i></button>
+                                                <button class="btn-icon"><i class="fas fa-key"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <button class="btn primary"><i class="fas fa-plus"></i> Add New User</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
