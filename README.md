@@ -32,5 +32,5 @@ The system performs the following annually:
 
 ---
 
-## 📁 Repository Structure
+
 
